@@ -363,6 +363,14 @@ h3 {
 
 .card {
   margin-bottom: 60px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .card .role {
@@ -472,18 +480,61 @@ a.hoverline:hover {
 }
 
 #skills h4 {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #008073;
   margin-bottom: 30px;
   padding-bottom: 20px;
+  color: #008073;
+  font-weight: 500;
 }
 
 #skills .col img.responsive-img {
   margin: 0 auto;
   max-height: 100px;
+  max-width: 100px;
   padding-bottom: 10px;
   text-align: center;
   vertical-align: middle;
-  display: table-cell;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}
+
+#skills .col img.responsive-img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+#skills .col img.responsive-img[src*="svg"] {
+  max-width: 80px;
+  max-height: 80px;
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto;
+}
+
+#skills .col {
+  margin-bottom: 30px;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+#skills .col:hover {
+  transform: translateY(-5px);
+}
+
+#skills .col > * {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#skills .row.text-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card.large .card-content p {
@@ -642,6 +693,19 @@ small {
     right: initial;
     top: initial;
   }
+  #skills .col {
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  #skills .card-content {
+    padding: 20px;
+  }
+  #skills .row.text-center {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -682,4 +746,128 @@ small {
   #intro.section {
     background-position-x: 30%;
   }
+  #skills .col {
+    margin-bottom: 25px;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    float: none;
+    display: block;
+  }
+  #skills .col img.responsive-img {
+    max-height: 70px;
+    max-width: 70px;
+    padding-bottom: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+  #skills h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+  #skills .card-content {
+    padding: 15px;
+  }
+  #skills .row.text-center {
+    margin: 0;
+    display: block;
+  }
+  #skills .row.text-center::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #experience .card-action span {
+    font-size: 12px;
+    display: block;
+    text-align: center;
+  }
+  .live-projects-carousel {
+    min-height: 350px;
+  }
+  .carousel-slide {
+    position: absolute;
+  }
+  .carousel-slide.active {
+    position: relative;
+  }
+  .carousel-slide .card {
+    margin-bottom: 20px;
+  }
+  .tech-stack .chip {
+    margin: 3px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+}
+
+/* Live Projects Carousel Styles */
+.live-projects-carousel {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: translateX(50px);
+  z-index: 1;
+  display: none !important;
+}
+
+.carousel-slide.active {
+  position: relative !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(0) !important;
+  z-index: 2 !important;
+  display: block !important;
+}
+
+.carousel-indicators {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px 0;
+}
+
+.carousel-indicators .indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators .indicator:hover {
+  transform: scale(1.2);
+  background-color: #008073;
+}
+
+.carousel-indicators .indicator.active {
+  background-color: #008073;
+  transform: scale(1.3);
+}
+
+.tech-stack {
+  margin: 20px 0;
+}
+
+.tech-stack .chip {
+  margin: 5px;
+  padding: 5px 12px;
+  display: inline-block;
+  font-size: 0.9rem;
 }
